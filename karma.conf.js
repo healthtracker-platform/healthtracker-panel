@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/betca-tpv-angular'),
+      dir: require('path').join(__dirname, './coverage/healthtracker-panel'),
       subdir: '.',
       reporters: [
         { type: 'html' },
