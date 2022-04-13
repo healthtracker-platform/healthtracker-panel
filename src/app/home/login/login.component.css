@@ -1,0 +1,33 @@
+.login-card{
+  width: 23em;
+  margin-top: 5em;
+}
+
+img {
+  width : 26em;
+  height: auto; /*to preserve the aspect ratio of the image*/
+}
+
+mat-form-field{
+  width: 27em;
+}
+
+
+.container {
+  height: 50px;
+  position: relative;
+}
+
+.center {
+  margin-bottom: 1em!important;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+mat-card{
+
+}
