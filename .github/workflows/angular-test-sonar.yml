@@ -1,7 +1,7 @@
 name: Angular - Tests
 on:
   push:
-    branches: ['develop', 'release-*']
+    branches: ['develop']
 jobs:
   build-angular:
     runs-on: ubuntu-latest
