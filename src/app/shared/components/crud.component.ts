@@ -8,11 +8,13 @@ import {Observable} from 'rxjs';
 })
 export class CrudComponent {
 
-  @Input() title = 'Management';
+  @Input() title : string;
   @Input() createAction = true;
   @Input() readAction = true;
   @Input() updateAction = true;
   @Input() deleteAction = true;
+  @Input() menuAction = true;
+  @Input() chatAction = true;
   @Output() create = new EventEmitter<any>();
   @Output() read = new EventEmitter<any>();
   @Output() update = new EventEmitter<any>();

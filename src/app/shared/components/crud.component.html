@@ -1,7 +1,6 @@
 <mat-card>
-  <mat-card-title>{{title}}<span *ngIf="columns.length===0"> - EMPTY!</span></mat-card-title>
   <mat-card-content>
-    <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+    <mat-table #table [dataSource]="dataSource" matSort>
       <mat-header-row *matHeaderRowDef="columnsHeader"></mat-header-row>
       <mat-row *matRowDef="let item; columns: columnsHeader"></mat-row>
       <!-- Dynamic column -->
@@ -11,8 +10,8 @@
       </ng-container>
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef>
-          <button (click)="onCreate()" *ngIf="createAction==true" mat-button mat-icon-button matSuffix>
-            <mat-icon color="warn">add</mat-icon>
+          <button (click)="onCreate()" *ngIf="createAction==true" mat-button  mat-raised-button  matSuffix>
+            <mat-icon color="primary">add</mat-icon> New {{title}}
           </button>
         </mat-header-cell>
         <mat-cell *matCellDef="let item">
@@ -20,10 +19,16 @@
             <mat-icon>visibility</mat-icon>
           </button>
           <button (click)="onUpdate(item)" *ngIf="updateAction==true" mat-button mat-icon-button matSuffix>
-            <mat-icon color="warn">mode_edit</mat-icon>
+            <mat-icon color="primary">mode_edit</mat-icon>
           </button>
           <button (click)="onDelete(item)" *ngIf="deleteAction==true" mat-button mat-icon-button matSuffix>
-            <mat-icon color="warn">close</mat-icon>
+            <mat-icon color="primary">close</mat-icon>
+          </button>
+          <button (click)="onCreate()" *ngIf="chatAction==true" mat-button mat-icon-button matSuffix>
+            <mat-icon color="primary">chat</mat-icon>
+          </button>
+          <button (click)="onCreate()" *ngIf="menuAction==true" mat-button mat-icon-button matSuffix>
+            <mat-icon color="primary">restaurant</mat-icon>
           </button>
         </mat-cell>
       </ng-container>

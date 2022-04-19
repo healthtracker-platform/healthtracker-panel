@@ -1,8 +1,6 @@
-import {ChangeDetectorRef, Component} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
-
+import {Component} from '@angular/core';
 import {AuthService} from '@core/auth.service';
-import {Subscription} from "rxjs";
+
 
 @Component({
   templateUrl: 'professional.component.html',
