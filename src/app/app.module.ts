@@ -5,15 +5,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CoreModule} from '@core/core.module';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
+import {SharedModule} from "@shared/shared.module";
 
 @NgModule({
   imports: [
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    CoreModule,
-    // HomeModule // eager load
-    // ShopModule // eager load
+    CoreModule
   ],
   declarations: [
     AppComponent,

@@ -2,7 +2,7 @@ import {Role} from './role.model';
 
 export interface User {
   token: string;
-  mobile?: number;
+  email?: string;
   name?: string;
   role?: Role;
 }

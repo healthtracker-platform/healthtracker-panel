@@ -1,16 +1,16 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {LoginComponent} from './login/login.component';
-import {HomeComponent} from './home.component';
+import {LoginComponent} from '@shared/components/login.component';
+import {ProfessionalComponent} from './professional.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: ProfessionalComponent,
     children: [
-      {path: 'login', component: LoginComponent}, // public
+
     ]
   }
 ];
@@ -19,5 +19,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class HomeRoutingModule {
+export class ProfessionalRoutingModule {
 }

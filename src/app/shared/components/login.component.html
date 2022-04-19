@@ -5,8 +5,8 @@
     <img alt="healthtracker" src="../../assets/images/logo_nombre.png"/>
     <p>
     <mat-form-field>
-      <input [(ngModel)]="mobile" matInput placeholder="Mobile" type="text"/>
-      <button (click)="mobile=undefined" *ngIf="mobile" aria-label="Clear" cdkFocusInitial mat-button mat-icon-button
+      <input [(ngModel)]="email" matInput placeholder="Email" type="text"/>
+      <button (click)="email=undefined" *ngIf="email" aria-label="Clear" cdkFocusInitial mat-button mat-icon-button
               matSuffix>
         <mat-icon>close</mat-icon>
       </button>
@@ -19,7 +19,7 @@
     </p>
   </mat-card-content>
   <mat-card-actions class="container">
-    <button mat-raised-button   class="center" color="primary">Log In</button>
+    <button mat-raised-button  (click)="login()" class="center" color="primary">Log In</button>
   </mat-card-actions>
 </mat-card>
 </mat-grid-tile>

@@ -2,8 +2,8 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'home/login'},
-  {path: 'home', loadChildren: () => import('./home/home.module').then(module => module.HomeModule)}, // lazy load
+  {path: '', pathMatch: 'full', redirectTo: 'professional'},
+  {path: 'professional', loadChildren: () => import('./professional/professional.module').then(module => module.ProfessionalModule)}, // lazy load
 ];
 
 @NgModule({

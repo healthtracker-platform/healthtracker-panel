@@ -19,14 +19,14 @@ export class AuthService {
   constructor(private httpService: HttpService, private router: Router) {
   }
 
-  login(mobile: number, password: string): Observable<User> {
-    return this.httpService.authBasic(mobile, password)
+  login(email: string, password: string): Observable<User> {
+    return this.httpService.authBasic(email, password)
       .post(AuthService.END_POINT)
       .pipe(
         map(jsonToken => {
           const jwtHelper = new JwtHelperService();
           this.user = jsonToken; // {token:jwt} => user.token = jwt
-          this.user.mobile = jwtHelper.decodeToken(jsonToken.token).user;  // secret key is not necessary
+          this.user.email = jwtHelper.decodeToken(jsonToken.token).user;  // secret key is not necessary
           this.user.name = jwtHelper.decodeToken(jsonToken.token).name;
           this.user.role = jwtHelper.decodeToken(jsonToken.token).role;
           return this.user;
@@ -51,20 +51,13 @@ export class AuthService {
     return this.hasRoles([Role.ADMIN]);
   }
 
-  untilManager(): boolean {
-    return this.hasRoles([Role.ADMIN, Role.MANAGER]);
+  isProfessional(): boolean {
+    return this.hasRoles([Role.PROFESSIONAL]);
   }
 
-  untilOperator(): boolean {
-    return this.hasRoles([Role.ADMIN, Role.MANAGER, Role.OPERATOR]);
-  }
 
-  isCustomer(): boolean {
-    return this.hasRoles([Role.CUSTOMER]);
-  }
-
-  getMobile(): number {
-    return this.user ? this.user.mobile : undefined;
+  getEmail(): string {
+    return this.user ? this.user.email : undefined;
   }
 
   getName(): string {

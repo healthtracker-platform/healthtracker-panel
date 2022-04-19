@@ -12,8 +12,8 @@ import {UppercaseWords} from '@shared/pipes/UppercaseWordsPipe';
 
 import {CrudComponent} from '@shared/components/crud.component';
 import {DateComponent} from '@shared/components/date.component';
-import {FooterComponent} from '@shared/components/footer.component';
 import {SearchComponent} from '@shared/components/search.component';
+import {LoginComponent} from "@shared/components/login.component";
 
 
 @NgModule({
@@ -28,10 +28,10 @@ import {SearchComponent} from '@shared/components/search.component';
     CancelYesDialogComponent,
     CrudComponent,
     DateComponent,
-    FooterComponent,
     ReadDetailDialogComponent,
     SearchComponent,
     UppercaseWords,
+    LoginComponent
   ],
   exports: [
     CancelYesDialogComponent,
@@ -42,11 +42,11 @@ import {SearchComponent} from '@shared/components/search.component';
     FlexModule,
     FormsModule,
     ReactiveFormsModule,
-    FooterComponent,
     MaterialModule,
     ReadDetailDialogComponent,
     SearchComponent,
     UppercaseWords,
+    LoginComponent
   ],
   entryComponents: [
     CancelYesDialogComponent,

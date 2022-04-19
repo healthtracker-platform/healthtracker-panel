@@ -1,0 +1,19 @@
+<mat-toolbar color="primary" *ngIf="isAuthenticated()">
+  <button mat-button routerLink="/">
+    <span>HealthTracker</span>
+  </button>
+  <div>
+    <button (click)="logout()" *ngIf="isAuthenticated()" mat-button>
+      <mat-icon>person_outline</mat-icon>
+      <span>Logout</span>
+    </button>
+    <button *ngIf="isAuthenticated()" mat-button>
+      <mat-icon>account_circle</mat-icon>
+      <span>Profile</span>
+    </button>
+  </div>
+</mat-toolbar>
+<app-admin *ngIf="isAuthenticated()&&isAdmin()"></app-admin>
+<app-login *ngIf="!isAuthenticated()"></app-login>
+<router-outlet></router-outlet>
+
