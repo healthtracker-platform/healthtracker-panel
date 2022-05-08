@@ -1,0 +1,11 @@
+.full-width {
+  width: 100%;
+}
+
+.radio-button{
+  margin: 2em;
+}
+
+mat-dialog-content {
+  width: 500px;
+}

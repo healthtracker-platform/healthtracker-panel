@@ -1,4 +1,3 @@
-import {Sex} from "@shared/models/sex.model";
 import {Role} from "@core/role.model";
 
 export interface User {

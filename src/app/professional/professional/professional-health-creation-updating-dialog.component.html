@@ -16,12 +16,22 @@
     <mat-label>Family Name</mat-label>
     <input [(ngModel)]="user.familyName" matInput required type="string">
   </mat-form-field>
-  <label>Sex *</label>
-  <mat-radio-group required aria-label="Sex"  [(ngModel)]="user.sex">
+  <p>
+    <label>Sex *</label>
+  <mat-radio-group required aria-label="Sex"  [(ngModel)]="user.sex" >
     <mat-radio-button class="radio-button" *ngFor="let sex of sexGroup" [value]="sex">
       {{sex}}
     </mat-radio-button>
   </mat-radio-group>
+  </p>
+  <p >
+    <label>Role *</label>
+  <mat-radio-group required aria-label="Role"  [(ngModel)]="role">
+    <mat-radio-button class="radio-button" *ngFor="let role of roleGroup" [value]="role">
+      {{role}}
+    </mat-radio-button>
+  </mat-radio-group>
+  </p>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button cdkFocusInitial mat-dialog-close mat-raised-button>Close</button>

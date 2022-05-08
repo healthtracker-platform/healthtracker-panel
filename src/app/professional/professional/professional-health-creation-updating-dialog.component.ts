@@ -1,6 +1,5 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
-import {AuthService} from '@core/auth.service';
 import {User} from "@shared/models/user.model";
 import {UserService} from "@shared/services/user.service";
 import {Role} from "@core/role.model";
@@ -9,20 +8,23 @@ import {PatientService} from "@shared/services/patient.service";
 import {Patient} from "@shared/models/patient.model";
 
 @Component({
-  templateUrl: 'patient-creation-updating-dialog.component.html',
-  styleUrls: ['patient-dialog.component.css']
+  templateUrl: 'professional-health-creation-updating-dialog.component.html',
+  styleUrls: ['professional-health-dialog.component.css']
 })
 
-export class PatientCreationUpdatingDialogComponent {
+export class ProfessionalHealthCreationUpdatingDialogComponent {
   user: User;
   title: string;
   oldId: string;
+  role: string;
   sexGroup= ["Male","Female"];
+  roleGroup= ["Health Professional","Admin"];
 
   constructor(@Inject(MAT_DIALOG_DATA) data: User, private userService: UserService,  private dialog: MatDialog, private patientService: PatientService) {
-    this.title = data ? 'Update Patient' : 'Create Patient';
-    this.user = data ? data : {id: undefined, firstName: undefined, familyName: undefined, role: Role.PATIENT, sex:"Male", active:true, email:undefined, password:undefined};
+    this.title = data ? 'Update Professional' : 'Create Professional';
+    this.user = data ? data : {id: undefined, firstName: undefined, familyName: undefined, role: undefined, sex:"Male", active:true, email:undefined, password:undefined};
     this.oldId = data ? data.id : undefined;
+    this.role = "Health Professional"
   }
 
   isCreated(): boolean{
@@ -35,6 +37,13 @@ export class PatientCreationUpdatingDialogComponent {
     }
     if(this.user.sex == "Female"){
       this.user.sex = Sex.FEMALE
+    }
+
+    if(this.role == "Admin"){
+      this.user.role = Role.ADMIN
+    }
+    if(this.role == "Health Professional"){
+      this.user.role = Role.PROFESSIONAL
     }
 
     const patient = new Patient();
