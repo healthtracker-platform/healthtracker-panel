@@ -4,7 +4,6 @@ export const environment = {
   production: true,
   NAME: pkg.name,
   VERSION: pkg.version,
-  REST_USER: 'https://betca-tpv-user.herokuapp.com',
-  REST_CORE: 'https://betca-tpv-core.herokuapp.com',
-  REST_CUSTOMER_SUPPORT: 'https://betca-tpv-customer-support.herokuapp.com'
+  REST_USER: 'https://healthtracker-user.herokuapp.com',
+  REST_STANDARIZATION: 'https://healthtracker-fhir.herokuapp.com',
 };
