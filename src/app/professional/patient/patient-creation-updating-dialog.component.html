@@ -1,5 +1,9 @@
 <h2 mat-dialog-title>{{title}}</h2>
+
 <mat-dialog-content>
+  <mat-card *ngIf="overlay" class="overlay mat-elevation-z0">
+    <mat-spinner class="spinner"> </mat-spinner>
+  </mat-card>
   <mat-form-field class="full-width">
     <mat-label>Email</mat-label>
     <input [(ngModel)]="user.email" matInput required type="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"/>
@@ -22,7 +26,10 @@
       {{sex}}
     </mat-radio-button>
   </mat-radio-group>
+<app-search-professional-by-name [(professional)]="professionalName"></app-search-professional-by-name>
+
 </mat-dialog-content>
+
 <mat-dialog-actions>
   <button cdkFocusInitial mat-dialog-close mat-raised-button>Close</button>
   <button *ngIf="isCreated()" (click)="create()" [disabled]=invalid() color="primary" mat-raised-button>Create

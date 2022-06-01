@@ -5,4 +5,5 @@ export class Patient {
   firstName?: string;
   familyName?: string;
   gender?: any;
+  professional?:string;
 }

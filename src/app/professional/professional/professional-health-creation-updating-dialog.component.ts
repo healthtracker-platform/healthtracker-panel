@@ -4,8 +4,9 @@ import {User} from "@shared/models/user.model";
 import {UserService} from "@shared/services/user.service";
 import {Role} from "@core/role.model";
 import {Sex} from "@shared/models/sex.model";
-import {PatientService} from "@shared/services/patient.service";
-import {Patient} from "@shared/models/patient.model";
+
+import {Professional} from "@shared/models/professional.model";
+import {ProfessionalService} from "@shared/services/professional.service";
 
 @Component({
   templateUrl: 'professional-health-creation-updating-dialog.component.html',
@@ -19,8 +20,9 @@ export class ProfessionalHealthCreationUpdatingDialogComponent {
   role: string;
   sexGroup= ["Male","Female"];
   roleGroup= ["Health Professional","Admin"];
+  overlay = false;
 
-  constructor(@Inject(MAT_DIALOG_DATA) data: User, private userService: UserService,  private dialog: MatDialog, private patientService: PatientService) {
+  constructor(@Inject(MAT_DIALOG_DATA) data: User, private userService: UserService,  private dialog: MatDialog, private professionalService: ProfessionalService) {
     this.title = data ? 'Update Professional' : 'Create Professional';
     this.user = data ? data : {id: undefined, firstName: undefined, familyName: undefined, role: undefined, sex:"Male", active:true, email:undefined, password:undefined};
     this.oldId = data ? data.id : undefined;
@@ -32,6 +34,7 @@ export class ProfessionalHealthCreationUpdatingDialogComponent {
   }
 
   create(): void {
+    this.overlay = true;
     if(this.user.sex == "Male"){
       this.user.sex = Sex.MALE
     }
@@ -46,15 +49,17 @@ export class ProfessionalHealthCreationUpdatingDialogComponent {
       this.user.role = Role.PROFESSIONAL
     }
 
-    const patient = new Patient();
-    patient.firstName = this.user.firstName;
-    patient.familyName = this.user.familyName;
-    patient.email = this.user.email;
-    patient.gender = this.user.sex;
+    const professional = new Professional();
+    professional.firstName = this.user.firstName;
+    professional.familyName = this.user.familyName;
+    professional.email = this.user.email;
+    professional.gender = this.user.sex;
 
     this.userService
       .create(this.user)
-      .subscribe(() => this.patientService.create(patient).subscribe(()=> this.dialog.closeAll()));
+      .subscribe(() => this.professionalService.create(professional).subscribe(()=>{
+        this.overlay = false;
+        this.dialog.closeAll()}));
   }
 
   update(): void{

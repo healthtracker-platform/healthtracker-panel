@@ -1,4 +1,7 @@
 <h2 mat-dialog-title>{{title}}</h2>
+<mat-card *ngIf="overlay" class="overlay mat-elevation-z0">
+  <mat-spinner class="spinner"> </mat-spinner>
+</mat-card>
 <mat-dialog-content>
   <mat-form-field class="full-width">
     <mat-label>Email</mat-label>

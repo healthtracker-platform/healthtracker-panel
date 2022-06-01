@@ -47,11 +47,6 @@ export class HttpService {
     return this;
   }
 
-  pdf(): HttpService {
-    this.responseType = 'blob';
-    this.header('Accept', 'application/pdf , application/json');
-    return this;
-  }
 
   post(endpoint: string, body?: object): Observable<any> {
     return this.http

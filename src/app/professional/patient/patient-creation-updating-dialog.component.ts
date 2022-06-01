@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, Output} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {AuthService} from '@core/auth.service';
 import {User} from "@shared/models/user.model";
@@ -7,6 +7,11 @@ import {Role} from "@core/role.model";
 import {Sex} from "@shared/models/sex.model";
 import {PatientService} from "@shared/services/patient.service";
 import {Patient} from "@shared/models/patient.model";
+import {Observable, of} from "rxjs";
+import {ProfessionalService} from "@shared/services/professional.service";
+import {ProfessionalName} from "@shared/models/professional-name.model";
+import {Professional} from "@shared/models/professional.model";
+import {NgProgressHttpModule} from "ngx-progressbar/http";
 
 @Component({
   templateUrl: 'patient-creation-updating-dialog.component.html',
@@ -18,18 +23,22 @@ export class PatientCreationUpdatingDialogComponent {
   title: string;
   oldId: string;
   sexGroup= ["Male","Female"];
+  professionalName: string;
+  overlay = false;
 
-  constructor(@Inject(MAT_DIALOG_DATA) data: User, private userService: UserService,  private dialog: MatDialog, private patientService: PatientService) {
+  constructor(@Inject(MAT_DIALOG_DATA) data: User, private userService: UserService,  private dialog: MatDialog, private patientService: PatientService, private professionalService : ProfessionalService) {
     this.title = data ? 'Update Patient' : 'Create Patient';
     this.user = data ? data : {id: undefined, firstName: undefined, familyName: undefined, role: Role.PATIENT, sex:"Male", active:true, email:undefined, password:undefined};
     this.oldId = data ? data.id : undefined;
   }
+
 
   isCreated(): boolean{
     return this.oldId === undefined;
   }
 
   create(): void {
+    this.overlay = true;
     if(this.user.sex == "Male"){
       this.user.sex = Sex.MALE
     }
@@ -43,9 +52,17 @@ export class PatientCreationUpdatingDialogComponent {
     patient.email = this.user.email;
     patient.gender = this.user.sex;
 
-    this.userService
-      .create(this.user)
-      .subscribe(() => this.patientService.create(patient).subscribe(()=> this.dialog.closeAll()));
+    this.professionalService.searchProfessionalByName(this.professionalName).subscribe(professional=>{
+      patient.professional = professional.id;
+      this.userService
+        .create(this.user)
+        .subscribe(() => this.patientService.create(patient).subscribe(()=> {
+          this.overlay = false;
+          this.dialog.closeAll()}));
+    });
+
+
+
   }
 
   update(): void{
@@ -55,10 +72,11 @@ export class PatientCreationUpdatingDialogComponent {
   }
 
   invalid(): boolean {
-    return this.check(this.user.sex) || this.check(this.user.password) || this.check(this.user.familyName) || this.check(this.user.firstName) || this.check(this.user.email);
+    return this.check(this.user.sex) || this.check(this.user.password) || this.check(this.user.familyName) || this.check(this.user.firstName) || this.check(this.user.email) || this.check(this.professionalName);
   }
 
   check(attr: string): boolean {
     return attr === undefined || null || attr === '';
   }
+
 }
