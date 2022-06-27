@@ -17,7 +17,7 @@ export class PatientReadDetailDialogComponent {
   emotion: Observable<Register>[];
   columnsHeaderWeight: Array<string> = ["date", "weight"];
   columnsHeaderWaist: Array<string> = ["date", "waist"];
-  columnsHeaderEmotion: Array<string> = ["date", "emotion"];
+  columnsHeaderEmotion: Array<string> = ["date", "emotion","text"];
 
   constructor(@Inject(MAT_DIALOG_DATA) data: any) {
     this.title = data.title;

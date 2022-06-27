@@ -1,4 +1,7 @@
-<h1 mat-dialog-title>{{title}}</h1>
+<mat-toolbar mat-dialog-header color="primary">
+  <span>{{title}}</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
 <mat-dialog-content>
   <ng-container *ngIf="(patient | async) as patient">
     <mat-grid-list cols="2" rowHeight="5em">
@@ -19,7 +22,7 @@
         </ng-container>
         <ng-container matColumnDef="weight">
           <mat-header-cell *matHeaderCellDef></mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
+          <mat-cell *matCellDef="let element"> {{element.value}} Kg</mat-cell>
         </ng-container>
       </mat-table>
     </mat-tab>
@@ -34,7 +37,7 @@
         </ng-container>
         <ng-container matColumnDef="waist">
           <mat-header-cell *matHeaderCellDef></mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
+          <mat-cell *matCellDef="let element"> {{element.value}} cm</mat-cell>
         </ng-container>
       </mat-table>
     </mat-tab>
@@ -49,13 +52,23 @@
         </ng-container>
         <ng-container matColumnDef="emotion">
           <mat-header-cell *matHeaderCellDef></mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
+          <mat-cell *matCellDef="let element">
+            <img  *ngIf="element.value==1" src="../../assets/images/crying-face-svgrepo-com.svg"/>
+            <img  *ngIf="element.value==2" src="../../assets/images/worried-face-svgrepo-com.svg"/>
+            <img  *ngIf="element.value==3" src="../../assets/images/neutral-face-svgrepo-com.svg"/>
+            <img  *ngIf="element.value==4" src="../../assets/images/winking-face-svgrepo-com.svg"/>
+            <img  *ngIf="element.value==5" src="../../assets/images/partying-face-svgrepo-com.svg"/>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="text">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.text}} </mat-cell>
         </ng-container>
       </mat-table>
     </mat-tab>
   </mat-tab-group>
   </ng-container>
 </mat-dialog-content>
-<mat-dialog-actions>
+<mat-dialog-actions align="end">
   <button mat-dialog-close mat-raised-button>Close</button>
 </mat-dialog-actions>

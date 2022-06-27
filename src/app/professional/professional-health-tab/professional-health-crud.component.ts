@@ -34,12 +34,7 @@ export class ProfessionalHealthCrudComponent implements OnInit {
   }
 
   read(professional: Professional): void{
-    this.dialog.open(ReadDetailDialogComponent, {
-      data: {
-        title: 'Health Professional Details',
-        object: of(professional)
-      }
-    });
+
   }
 
   delete(professional: Professional): void {

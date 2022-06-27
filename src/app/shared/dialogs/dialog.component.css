@@ -1,4 +1,14 @@
 .mat-dialog-content {
-  height: 400px;
+  height: 350px;
   width: 800px;
+}
+
+img{
+  height: 40px!important;
+  width: 40px!important;
+}
+
+.mat-dialog-title{
+  background-color: blue;
+  color: white;
 }
