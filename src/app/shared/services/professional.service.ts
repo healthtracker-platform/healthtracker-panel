@@ -18,8 +18,8 @@ export class ProfessionalService {
   constructor(private httpService: HttpService) {
   }
 
-  create(professional: Professional): Observable<Professional> {
-    return this.httpService.successful()
+  create(professional: Professional): Observable<String> {
+    return this.httpService
       .post(EndPoints.PROFESSIONALS , professional);
   }
 
@@ -39,5 +39,10 @@ export class ProfessionalService {
       .pipe(
         map(response => response)
       );
+  }
+
+  searchAll(): Observable<Professional[]>{
+    return this.httpService
+      .get(EndPoints.PROFESSIONALS);
   }
 }

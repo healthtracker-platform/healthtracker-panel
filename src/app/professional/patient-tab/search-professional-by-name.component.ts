@@ -4,7 +4,7 @@ import {ProfessionalService} from "@shared/services/professional.service";
 
 
 @Component({
-  selector: 'app-search-professional-by-name',
+  selector: 'app-search-professional-health-tab-by-name',
   templateUrl: './search-professional-by-name.component.html',
   styleUrls: ['search-professional-by-name.component.css']
 })

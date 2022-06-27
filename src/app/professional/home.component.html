@@ -3,6 +3,7 @@
     <span>HealthTracker</span>
   </button>
   <div>
+    <a>{{name}}</a>
     <button (click)="logout()" *ngIf="isAuthenticated()" mat-button>
       <mat-icon>person_outline</mat-icon>
       <span>Logout</span>
@@ -14,6 +15,7 @@
   </div>
 </mat-toolbar>
 <app-admin *ngIf="isAuthenticated()&&isAdmin()"></app-admin>
+<app-professional *ngIf="isAuthenticated()&&isProfessional()"> </app-professional>
 <app-login *ngIf="!isAuthenticated()"></app-login>
 <router-outlet></router-outlet>
 

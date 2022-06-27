@@ -4,7 +4,7 @@ import {LoginComponent} from "@shared/components/login.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
-  {path: 'professional', loadChildren: () => import('./professional/professional.module').then(module => module.ProfessionalModule)}, // lazy load
+  {path: 'health-professional', loadChildren: () => import('./professional/professional.module').then(module => module.ProfessionalModule)}, // lazy load
   {
     path: 'login',
     component: LoginComponent,

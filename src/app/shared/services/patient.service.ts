@@ -9,12 +9,24 @@ import {Patient} from "@shared/models/patient.model";
   providedIn: 'root',
 })
 export class PatientService {
+  private static SEARCH = '/search';
 
   constructor(private httpService: HttpService) {
   }
 
-  create(patient: Patient): Observable<Patient> {
-    return this.httpService.successful()
+  create(patient: Patient): Observable<String> {
+    return this.httpService
       .post(EndPoints.PATIENTS , patient);
+  }
+
+  searchByProfessional(professional: string): Observable<Patient[]> {
+    return this.httpService
+      .param("professional", professional)
+      .get(EndPoints.PATIENTS + PatientService.SEARCH);
+  }
+
+  searchAll(): Observable<Patient[]> {
+    return this.httpService
+      .get(EndPoints.PATIENTS + PatientService.SEARCH);
   }
 }

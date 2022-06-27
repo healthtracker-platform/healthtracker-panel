@@ -1,0 +1,34 @@
+<mat-card>
+  <mat-card-content>
+    <button (click)="onCreate()" mat-button  mat-raised-button  matSuffix>
+      <mat-icon color="primary">add</mat-icon> New {{title}}
+    </button>
+    <mat-table #table [dataSource]="professionals" matSort>
+      <mat-header-row *matHeaderRowDef="columnsHeader"></mat-header-row>
+      <mat-row *matRowDef="let item; columns: columnsHeader"></mat-row>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.firstName + " " + element.familyName }} </mat-cell>
+      </ng-container>
+
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+
+        </mat-header-cell>
+        <mat-cell *matCellDef="let item">
+          <button *ngIf="true" (click)="read(item)"  mat-button mat-icon-button matSuffix>
+            <mat-icon color="primary">visibility</mat-icon>
+          </button>
+          <button *ngIf="true" (click)="onUpdate(item)"  mat-button mat-icon-button matSuffix>
+            <mat-icon color="primary">mode_edit</mat-icon>
+          </button>
+          <button *ngIf="true" (click)="delete(item)"  mat-button mat-icon-button matSuffix>
+            <mat-icon color="primary">close</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+    </mat-table>
+  </mat-card-content>
+</mat-card>

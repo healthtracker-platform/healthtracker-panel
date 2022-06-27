@@ -1,13 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {ProfessionalComponent} from './professional.component';
+import {HomeComponent} from './home.component';
 const routes: Routes = [
+  {path: '', pathMatch: 'full', redirectTo: 'login'},
   {
     path: '',
-    component: ProfessionalComponent,
-    children: [
-
-    ]
+    component: HomeComponent,
   }
 ];
 

@@ -1,0 +1,61 @@
+<h1 mat-dialog-title>{{title}}</h1>
+<mat-dialog-content>
+  <ng-container *ngIf="(patient | async) as patient">
+    <mat-grid-list cols="2" rowHeight="5em">
+      <mat-grid-tile><strong>E-mail</strong>: {{patient.email}}</mat-grid-tile>
+      <mat-grid-tile><strong>Gender</strong>: {{patient.gender| uppercaseWords}}</mat-grid-tile>
+    </mat-grid-list>
+  </ng-container>
+  <ng-container>
+  <mat-tab-group animationDuration="0ms" mat-align-tabs="center">
+    <mat-tab label="Weight">
+      <mat-table #table [dataSource]="weight" matSort>
+        <mat-header-row *matHeaderRowDef="columnsHeaderWeight"></mat-header-row>
+        <mat-row *matRowDef="let item; columns: columnsHeaderWeight"></mat-row>
+
+        <ng-container matColumnDef="date">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.date | date: 'dd/MM/yyyy'}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="weight">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
+        </ng-container>
+      </mat-table>
+    </mat-tab>
+    <mat-tab label="Waist Diameter">
+      <mat-table #table [dataSource]="waist" matSort>
+        <mat-header-row *matHeaderRowDef="columnsHeaderWaist"></mat-header-row>
+        <mat-row *matRowDef="let item; columns: columnsHeaderWaist"></mat-row>
+
+        <ng-container matColumnDef="date">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.date | date: 'dd/MM/yyyy'}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="waist">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
+        </ng-container>
+      </mat-table>
+    </mat-tab>
+    <mat-tab label="Emotion">
+      <mat-table #table [dataSource]="emotion" matSort>
+        <mat-header-row *matHeaderRowDef="columnsHeaderEmotion"></mat-header-row>
+        <mat-row *matRowDef="let item; columns: columnsHeaderEmotion"></mat-row>
+
+        <ng-container matColumnDef="date">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.date | date: 'dd/MM/yyyy'}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="emotion">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
+        </ng-container>
+      </mat-table>
+    </mat-tab>
+  </mat-tab-group>
+  </ng-container>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-dialog-close mat-raised-button>Close</button>
+</mat-dialog-actions>

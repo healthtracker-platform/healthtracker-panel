@@ -14,6 +14,7 @@ import {CrudComponent} from '@shared/components/crud.component';
 import {DateComponent} from '@shared/components/date.component';
 import {SearchComponent} from '@shared/components/search.component';
 import {LoginComponent} from "@shared/components/login.component";
+import {PatientReadDetailDialogComponent} from "@shared/dialogs/patient-read-detail.dialog.component";
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import {LoginComponent} from "@shared/components/login.component";
     CrudComponent,
     DateComponent,
     ReadDetailDialogComponent,
+    PatientReadDetailDialogComponent,
     SearchComponent,
     UppercaseWords,
     LoginComponent
@@ -44,6 +46,7 @@ import {LoginComponent} from "@shared/components/login.component";
     ReactiveFormsModule,
     MaterialModule,
     ReadDetailDialogComponent,
+    PatientReadDetailDialogComponent,
     SearchComponent,
     UppercaseWords,
     LoginComponent
@@ -51,6 +54,7 @@ import {LoginComponent} from "@shared/components/login.component";
   entryComponents: [
     CancelYesDialogComponent,
     ReadDetailDialogComponent,
+    PatientReadDetailDialogComponent
   ]
 })
 export class SharedModule {

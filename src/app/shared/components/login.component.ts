@@ -21,10 +21,11 @@ export class LoginComponent {
   login(): void {
     this.auth.login(this.email, this.password).subscribe(
       () => {
-        if (this.auth.isProfessional() || this.auth.isAdmin()) {
-          this.router.navigate(['professional']);
-        }else{
-          this.snackBar.open("Unauthorized", 'Error', {duration: 5000})
+        if (this.auth.isAdmin()) {
+          this.router.navigate(['health-professional']);
+        }
+        if (this.auth.isProfessional()){
+          this.router.navigate(['health-professional']);
         }
       }
     );
