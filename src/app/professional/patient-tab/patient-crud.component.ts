@@ -62,7 +62,6 @@ export class PatientCrudComponent implements OnInit {
   }
 
   isProfessional(): boolean {
-    console.log(this.isProfessional())
     return this.auth.isProfessional();
   }
 }
