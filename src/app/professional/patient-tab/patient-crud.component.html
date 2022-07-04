@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-content>
-    <button (click)="onCreate()" mat-button  mat-raised-button  matSuffix>
+    <button *ngIf="!isProfessional()" (click)="onCreate()" mat-button  mat-raised-button  matSuffix>
       <mat-icon color="primary">add</mat-icon> New {{title}}
     </button>
     <mat-table #table [dataSource]="patients" matSort>
@@ -18,16 +18,16 @@
 
         </mat-header-cell>
         <mat-cell *matCellDef="let item">
-          <button *ngIf="true"   mat-button mat-icon-button matSuffix>
+          <button   mat-button mat-icon-button matSuffix>
             <mat-icon color="primary">chat</mat-icon>
           </button>
-          <button *ngIf="true" (click)="read(item)"  mat-button mat-icon-button matSuffix>
+          <button  (click)="read(item)"  mat-button mat-icon-button matSuffix>
             <mat-icon color="primary">visibility</mat-icon>
           </button>
-          <button *ngIf="true" (click)="onUpdate(item)"  mat-button mat-icon-button matSuffix>
+          <button *ngIf="!isProfessional()" (click)="onUpdate(item)"  mat-button mat-icon-button matSuffix>
             <mat-icon color="primary">mode_edit</mat-icon>
           </button>
-          <button *ngIf="true" (click)="delete(item)"  mat-button mat-icon-button matSuffix>
+          <button *ngIf="!isProfessional()" (click)="delete(item)"  mat-button mat-icon-button matSuffix>
             <mat-icon color="primary">close</mat-icon>
           </button>
         </mat-cell>

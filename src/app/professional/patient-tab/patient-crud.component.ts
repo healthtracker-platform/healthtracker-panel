@@ -20,7 +20,6 @@ export class PatientCrudComponent implements OnInit {
   @Input ()
   patients = of([]);
   columnsHeader: Array<string> = ["name", "actions"];
-  isProfessional : boolean;
   weight: Observable<Register>[];
   waist: Observable<Register>[];
   emotion: Observable<Register>[];
@@ -31,7 +30,7 @@ export class PatientCrudComponent implements OnInit {
   constructor(private dialog: MatDialog, private patientService: PatientService, private auth: AuthService, private registerService: RegisterService) { }
 
   ngOnInit(): void {
-    this.isProfessional = this.auth.isProfessional()
+
   }
 
   // isClosed(complaint: Complaint): boolean{
@@ -62,4 +61,8 @@ export class PatientCrudComponent implements OnInit {
     // this.update.emit(item);
   }
 
+  isProfessional(): boolean {
+    console.log(this.isProfessional())
+    return this.auth.isProfessional();
+  }
 }
